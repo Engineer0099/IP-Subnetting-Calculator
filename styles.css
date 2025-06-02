@@ -1,0 +1,230 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #2c3e50;
+    margin-top: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.input-section {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+input[type="text"], 
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.input-options {
+    background: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+}
+
+.input-options div {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.input-options input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.input-options label {
+    margin-bottom: 0;
+    margin-right: 10px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.input-options input[type="text"],
+.input-options input[type="number"] {
+    width: auto;
+    flex-grow: 1;
+}
+
+button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    margin: 20px auto 0;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+.results-section {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.result-item {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.result-label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.result-value {
+    font-family: monospace;
+    font-size: 16px;
+    color: #e74c3c;
+}
+
+.error {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .input-options div {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .input-options input[type="text"],
+    .input-options input[type="number"] {
+        width: 100%;
+    }
+}
+.subnet-table-section {
+    margin-top: 30px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-family: monospace;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+    font-family: inherit;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.subnet-lookup {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.lookup-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 15px;
+    align-items: end;
+}
+
+.lookup-result {
+    margin-top: 15px;
+    padding: 15px;
+    background: #e8f4fc;
+    border-radius: 5px;
+    grid-column: span 3;
+}
+
+.lookup-result pre {
+    margin: 0;
+    white-space: pre-wrap;
+    font-family: monospace;
+}
+
+@media (max-width: 768px) {
+    .lookup-form {
+        grid-template-columns: 1fr;
+    }
+    
+    .lookup-result {
+        grid-column: span 1;
+    }
+}

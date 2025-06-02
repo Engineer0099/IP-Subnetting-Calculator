@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta title="IP Subnet Calculator">
+    <meta name="description" content="A simple and efficient IP subnet calculator to help you calculate subnets, hosts, and network details.">
+    <meta name="keywords" content="IP, Subnet, Calculator, Networking, CIDR, Hosts, Subnets">
+    <meta name="author" content="Frank Tarimo">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/icon.png">
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-title" content="IP Subnet Calculator">
+    <meta name="apple-mobile-web-app-title" content="IP Subnet Calculator">
+    <meta name="application-name" content="IP Subnet Calculator">
+    <meta name="msapplication-TileColor" content="#4CAF50">
+    <meta name="msapplication-TileImage" content="images/icon.png">
+
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <meta name="theme-color" content="#4CAF50">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="IP Subnet Calculator">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-title" content="IP Subnet Calculator">
+    <meta name="description" content="A simple and efficient IP subnet calculator to help you calculate subnets, hosts, and network details.">
+    <meta name="keywords" content="IP, Subnet, Calculator, Networking, CIDR, Hosts, Subnets">
+    <meta name="author" content="Frank Tarimo">
+    <meta name="theme-color" content="#4CAF50">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:title" content="IP Subnet Calculator">
+    <meta property="og:description" content="A simple and efficient IP subnet calculator to help you calculate subnets, hosts, and network details.">
+    <meta property="og:image" content="https://example.com/images/icon.png">
+    <meta property="og:image:alt" content="IP Subnet Calculator Icon">
+    <meta property="og:site_name" content="IP Subnet Calculator">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:updated_time" content="2025-06-01T12:00:00Z">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://example.com">
+    <meta name="twitter:title" content="IP Subnet Calculator">
+    <meta name="twitter:description" content="A simple and efficient IP subnet calculator to help you calculate subnets, hosts, and network details.">
+    <meta name="twitter:image" content="https://example.com/images/icon.png">
+    <meta name="twitter:image:alt" content="IP Subnet Calculator Icon">
+
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/icon.png">
+    <link rel="manifest" href="manifest.json">
+
+    <title>IP Subnet Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>IP Subnet Calculator</h1>
+        
+        <div class="input-section">
+            <div class="form-group">
+                <label for="ipAddress">IP Address Block:</label>
+                <input type="text" id="ipAddress" placeholder="e.g., 192.168.1.0" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Provide at least one of these:</label>
+                <div class="input-options">
+                    <div>
+                        <input type="checkbox" id="useSubnetMask" checked>
+                        <label for="subnetMask">Subnet Mask (CIDR or dotted):</label>
+                        <input type="text" id="subnetMask" placeholder="e.g., /24 or 255.255.255.0">
+                    </div>
+                    <div>
+                        <input type="checkbox" id="useSubnets">
+                        <label for="subnetsNeeded">Subnets Needed:</label>
+                        <input type="number" id="subnetsNeeded" min="1" disabled>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="useHosts">
+                        <label for="hostsNeeded">Hosts Needed:</label>
+                        <input type="number" id="hostsNeeded" min="1" disabled>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="useUsableHosts">
+                        <label for="usableHostsNeeded">Usable Hosts Needed:</label>
+                        <input type="number" id="usableHostsNeeded" min="1" disabled>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="calculateBtn">Calculate</button>
+        </div>
+        
+        <div class="results-section" id="results">
+            <h2>Results</h2>
+            <div class="result-grid">
+                <div class="result-item">
+                    <span class="result-label">IP Class:</span>
+                    <span class="result-value" id="ipClass">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Default Subnet Mask:</span>
+                    <span class="result-value" id="defaultMask">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Custom Subnet Mask:</span>
+                    <span class="result-value" id="customMask">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Subnet Bits (Borrowed):</span>
+                    <span class="result-value" id="borrowedBits">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Total Subnets:</span>
+                    <span class="result-value" id="totalSubnets">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Hosts per Subnet:</span>
+                    <span class="result-value" id="hostsPerSubnet">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Usable Hosts per Subnet:</span>
+                    <span class="result-value" id="usableHosts">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Network Address:</span>
+                    <span class="result-value" id="networkAddress">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">First Host:</span>
+                    <span class="result-value" id="firstHost">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Last Host:</span>
+                    <span class="result-value" id="lastHost">-</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Broadcast Address:</span>
+                    <span class="result-value" id="broadcastAddress">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="subnet-table-section" id="subnetTable">
+    <h2>Subnet Details</h2>
+    <div class="table-container">
+        <table id="subnetDetailsTable">
+            <thead>
+                <tr>
+                    <th>Subnet</th>
+                    <th>Network Address</th>
+                    <th>Usable Range</th>
+                    <th>Broadcast Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Will be populated by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="subnet-lookup">
+        <h3>Subnet Lookup</h3>
+        <div class="lookup-form">
+            <div class="form-group">
+                <label for="subnetNumber">Subnet Number:</label>
+                <input type="number" id="subnetNumber" min="0" placeholder="Enter subnet number">
+            </div>
+            <div class="form-group">
+                <label for="lookupType">Information Type:</label>
+                <select id="lookupType">
+                    <option value="network">Network Address</option>
+                    <option value="usable">Usable Range</option>
+                    <option value="broadcast">Broadcast Address</option>
+                    <option value="all">All Information</option>
+                </select>
+            </div>
+            <button id="lookupBtn">Lookup</button>
+            <div id="lookupResult" class="lookup-result"></div>
+        </div>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
