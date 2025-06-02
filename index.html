@@ -191,6 +191,80 @@
             </div>
         </div>
     </div>
+    <!-- Modal Trigger Button -->
+    <button id="showFormulasBtn" class="modal-trigger">Show Subnetting Formulas</button>
+
+    <!-- Modal Structure -->
+    <div id="formulasModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" id="closeModalBtn">&times;</span>
+            <h2>IP Subnetting Formulas</h2>
+            <ul>
+                <li><strong>Total Subnets:</strong> 2<sup>n</sup> (n = number of borrowed bits)</li>
+                <li><strong>Hosts per Subnet:</strong> 2<sup>h</sup> (h = number of host bits)</li>
+                <li><strong>Usable Hosts per Subnet:</strong> 2<sup>h</sup> - 2</li>
+                <li><strong>Subnet Mask (CIDR):</strong> /<em>prefix length</em> (e.g., /24)</li>
+                <li><strong>Subnet Mask (Dotted Decimal):</strong> e.g., 255.255.255.0</li>
+                <li><strong>Network Address:</strong> First address in the subnet (all host bits = 0)</li>
+                <li><strong>Broadcast Address:</strong> Last address in the subnet (all host bits = 1)</li>
+                <li><strong>First Usable Host:</strong> Network Address + 1</li>
+                <li><strong>Last Usable Host:</strong> Broadcast Address - 1</li>
+            </ul>
+        </div>
+    </div>
+
+    <style>
+    .modal {
+        position: fixed;
+        z-index: 1000;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        overflow: auto;
+        background: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+        background: #fff;
+        margin: 5% auto;
+        padding: 2em;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 500px;
+        position: relative;
+    }
+    .close {
+        position: absolute;
+        right: 1em;
+        top: 1em;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+    .modal-trigger {
+        margin: 2em auto 0;
+        display: block;
+        padding: 0.7em 1.5em;
+        background: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 1em;
+        cursor: pointer;
+    }
+    </style>
+
+    <script>
+    document.getElementById('showFormulasBtn').onclick = function() {
+        document.getElementById('formulasModal').style.display = 'block';
+    };
+    document.getElementById('closeModalBtn').onclick = function() {
+        document.getElementById('formulasModal').style.display = 'none';
+    };
+    window.onclick = function(event) {
+        var modal = document.getElementById('formulasModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+    </script>
 
     <footer>
         <p>&copy; 2025 Frank Tarimo. All rights reserved.</p>
