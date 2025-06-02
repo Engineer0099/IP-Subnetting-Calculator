@@ -153,45 +153,49 @@
     </div>
     
     <div class="subnet-table-section" id="subnetTable">
-    <h2>Subnet Details</h2>
-    <div class="table-container">
-        <table id="subnetDetailsTable">
-            <thead>
-                <tr>
-                    <th>Subnet</th>
-                    <th>Network Address</th>
-                    <th>Usable Range</th>
-                    <th>Broadcast Address</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Will be populated by JavaScript -->
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="subnet-lookup">
-        <h3>Subnet Lookup</h3>
-        <div class="lookup-form">
-            <div class="form-group">
-                <label for="subnetNumber">Subnet Number:</label>
-                <input type="number" id="subnetNumber" min="0" placeholder="Enter subnet number">
+        <h2>Subnet Details</h2>
+        <div class="table-container">
+            <table id="subnetDetailsTable">
+                <thead>
+                    <tr>
+                        <th>Subnet</th>
+                        <th>Network Address</th>
+                        <th>Usable Range</th>
+                        <th>Broadcast Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="subnet-lookup">
+            <h3>Subnet Lookup</h3>
+            <div class="lookup-form">
+                <div class="form-group">
+                    <label for="subnetNumber">Subnet Number:</label>
+                    <input type="number" id="subnetNumber" min="0" placeholder="Enter subnet number">
+                </div>
+                <div class="form-group">
+                    <label for="lookupType">Information Type:</label>
+                    <select id="lookupType">
+                        <option value="network">Network Address</option>
+                        <option value="usable">Usable Range</option>
+                        <option value="broadcast">Broadcast Address</option>
+                        <option value="all">All Information</option>
+                    </select>
+                </div>
+                <button id="lookupBtn">Lookup</button>
+                <div id="lookupResult" class="lookup-result"></div>
             </div>
-            <div class="form-group">
-                <label for="lookupType">Information Type:</label>
-                <select id="lookupType">
-                    <option value="network">Network Address</option>
-                    <option value="usable">Usable Range</option>
-                    <option value="broadcast">Broadcast Address</option>
-                    <option value="all">All Information</option>
-                </select>
-            </div>
-            <button id="lookupBtn">Lookup</button>
-            <div id="lookupResult" class="lookup-result"></div>
         </div>
     </div>
-</div>
 
+    <footer>
+        <p>&copy; 2025 Frank Tarimo. All rights reserved.</p>
+        <p>Created with ❤️ for the community.</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
